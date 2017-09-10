@@ -1,0 +1,13 @@
+TITLE    ="Plot3D DataSet"
+VARIABLES = "y"
+"z"
+"p"
+"v"
+"w"
+DATASETAUXDATA Common.SpeedOfSound="1.0"
+DATASETAUXDATA Common.VectorVarsAreVelocity="FALSE"
+ZONE T="Zone-original grid"
+ STRANDID=0, SOLUTIONTIME=0
+ I=258, J=258, K=1, ZONETYPE=Ordered
+ DATAPACKING=POINT
+ DT=(SINGLE SINGLE SINGLE SINGLE SINGLE )

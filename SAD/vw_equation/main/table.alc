@@ -1,0 +1,6 @@
+        allocate(app1(m11,n11),aiw1(m11,n11),aie1(m11,n11),ajs1(m11,n11),ajn1(m11,n11),akb1(m11,n11),akt1(m11,n11), &
+                 bpp1(m11,n11),res1(m11,n11),stat=ierr)
+        allocate(pre(m11,n11),stat=ierr)
+        allocate(uu1(m11,n11),vv1(m11,n11),ww1(m11,n11),stat=ierr)
+        allocate(ui1(m11,n11),vi1(m11,n11),wi1(m11,n11),stat=ierr)
+        allocate(hu0(m11,n11),hv0(m11,n11),hw0(m11,n11),stat=ierr)

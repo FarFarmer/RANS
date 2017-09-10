@@ -1,0 +1,190 @@
+
+#
+# Absoft Developer Tools Interface requires use of this makefile.
+#
+.SHELL: name="cmd.exe"
+MKDIR=if not exist "$(OBJDIR)" mkdir 
+RMDIR=rmdir /S /Q
+
+#
+# Variables for the compiler(s) and linker
+#
+ABSOFT_F95=f95 
+ABSOFT_F77=f95
+VAST_PREPROCESSOR=vastfp.exe
+RC=rc.exe
+CL=cl.exe /NOLOGO
+MAKE=amake2
+ABSOFT_F95_LINKER=f95
+DUMMY=
+
+#
+# Flags
+#
+ABSOFT_F95_FLAGS=  -g -m32 -stack:32768000
+ABSOFT_F77_FLAGS=  -f77_compat -g -m32 -stack:32768000
+RC_FLAGS=
+CL_FLAGS= -Zi
+MAKE_FLAGS= -k
+ABSOFT_F95_LINKER_FLAGS=-IPA:debug=on -IPA:source_pu_order=on           -stack:32768000 -m32 -g
+
+#
+# Name of the executable
+#
+TARGET=project.exe
+OUTDIR=.
+OBJDIR=.\Debug
+
+#
+# Files for this executable
+#
+VAST_PREPROCESSOR_FILES=
+ABSOFT_F95_FILES="fboundy.f95" "fcontro.f95" "fequatp.f95" "fequatu.f95" "fequatv.f95" "fequatw.f95" "finitia.f95" "fipadop.f95" "freynold.f95" "fsolves.f95" "fsupply.f95" "famain.f95"
+ABSOFT_F77_FILES=
+CL_FILES=
+ABSOFT_F95_LINKER_FILES=
+RC_FILES=
+MAKE_FILES=
+
+#
+# Rules and dependencies for the executable
+#
+SRCFILES=$(ABSOFT_F95_FILES)
+OBJFILES="$(OBJDIR)\fboundy.obj" "$(OBJDIR)\fcontro.obj" "$(OBJDIR)\fequatp.obj" "$(OBJDIR)\fequatu.obj" "$(OBJDIR)\fequatv.obj" "$(OBJDIR)\fequatw.obj" "$(OBJDIR)\finitia.obj" "$(OBJDIR)\fipadop.obj" "$(OBJDIR)\freynold.obj" "$(OBJDIR)\fsolves.obj" "$(OBJDIR)\fsupply.obj" "$(OBJDIR)\famain.obj"
+all: "$(OBJDIR)" "$(OUTDIR)\$(TARGET)"
+	
+
+"$(OUTDIR)\$(TARGET)":  $(OBJFILES) $(ABSOFT_F95_LINKER_FILES) $(MODFILES) $(RC_FILES)
+	$(ABSOFT_F95_LINKER)  $(LPATHS) $(OBJFILES) $(ABSOFT_F95_LINKER_FILES) $(LIBS) -o "$(OUTDIR)\$(TARGET)" $(ABSOFT_F95_LINKER_FLAGS)
+
+
+
+"$(OBJDIR)\fboundy.obj": "fboundy.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\fboundy.obj" "fboundy.f95"
+
+"$(OBJDIR)\fcontro.obj": "fcontro.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\fcontro.obj" "fcontro.f95"
+
+"$(OBJDIR)\fequatp.obj": "fequatp.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\fequatp.obj" "fequatp.f95"
+
+"$(OBJDIR)\fequatu.obj": "fequatu.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\fequatu.obj" "fequatu.f95"
+
+"$(OBJDIR)\fequatv.obj": "fequatv.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\fequatv.obj" "fequatv.f95"
+
+"$(OBJDIR)\fequatw.obj": "fequatw.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\fequatw.obj" "fequatw.f95"
+
+"$(OBJDIR)\finitia.obj": "finitia.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\finitia.obj" "finitia.f95"
+
+"$(OBJDIR)\fipadop.obj": "fipadop.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\fipadop.obj" "fipadop.f95"
+
+"$(OBJDIR)\freynold.obj": "freynold.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\freynold.obj" "freynold.f95"
+
+"$(OBJDIR)\fsolves.obj": "fsolves.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\fsolves.obj" "fsolves.f95"
+
+"$(OBJDIR)\fsupply.obj": "fsupply.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\fsupply.obj" "fsupply.f95"
+
+"$(OBJDIR)\famain.obj": "famain.f95"
+	$(ABSOFT_F95) -c -nowdir -YLOOP_ANALYZER -LNO:simd_verbose=on -LNO:apo_verbose=on -CG:filetable_verbose=on $(ABSOFT_F95_FLAGS) -o "$(OBJDIR)\famain.obj" "famain.f95"
+
+"$(OBJDIR)":
+	$(MKDIR) "$(OBJDIR)"
+#
+# Clean Rules
+#
+clean:
+	 if exist "$(OBJDIR)" $(RMDIR) "$(OBJDIR)" 
+	 if exist "$(TARGET)" erase "$(TARGET)"
+
+#
+# Define necessary macros for dependency scanning.
+#
+MKDEP=amakedepend
+MKDEP_FLAGS= -quiet "-pre$(OBJDIR)\"\" -Y -modInfo -errdel -f90 -f makefile.amake
+#
+# Generate dependencies for the project
+#
+ScanAll: "$(OUTDIR)" "$(OBJDIR)" MakeDepsAll
+
+#
+# Scan for all F77, F95, and c/c++ dependencies
+#
+MakeDepsAll:
+	$(MKDEP) -quiet "-pre.\Debug\\" -Y -modInfo -errdel -f90 -f makefile.amake -a -info   -g -m32 -stack:32768000 -info "fboundy.f95" "fcontro.f95" "fequatp.f95" "fequatu.f95" "fequatv.f95" "fequatw.f95" "finitia.f95" "fipadop.f95" "freynold.f95" "fsolves.f95" "fsupply.f95" "famain.f95" 
+# DO NOT DELETE THIS LINE - makedepend depends upon it.
+
+
+
+
+
+
+
+
+
+
+
+
+".\Debug\famain.obj"&: ".\Debug\varalc.mod"
+
+# Defined Module: .\Debug\varalc.mod
+".\Debug\fboundy.obj": "table.prc" "table.prc" "table.prc" "table.prc"
+
+".\Debug\fcontro.obj": "table.prc" "table.cre"
+
+".\Debug\fequatp.obj": ".\Debug\varalc.mod" "table.prc" "table.cre"
+".\Debug\fequatp.obj": "table.gd1"
+
+".\Debug\fequatu.obj": ".\Debug\varalc.mod" "table.prc" "table.cre"
+".\Debug\fequatu.obj": "table.gd1" "table.lei"
+
+".\Debug\fequatv.obj": ".\Debug\varalc.mod" "table.prc" "table.cre"
+".\Debug\fequatv.obj": "table.gd1"
+
+".\Debug\fequatw.obj": ".\Debug\varalc.mod" "table.prc" "table.cre"
+".\Debug\fequatw.obj": "table.gd1"
+
+".\Debug\finitia.obj": ".\Debug\varalc.mod" "table.prc" "table.cre"
+".\Debug\finitia.obj": "table.gd1" "table.lei" "table.prc" "table.cre"
+".\Debug\finitia.obj": "table.gd1" "table.lei" "table.prc" "table.cre"
+".\Debug\finitia.obj": "table.gd1"
+
+".\Debug\fipadop.obj": "table.prc" "table.cre" "table.gd1" "table.gd2"
+".\Debug\fipadop.obj": "table.gd3" "table.gd4" "table.gd5" "table.gd6"
+".\Debug\fipadop.obj": "table.gd7" "table.prc" "table.cre" "table.gd1"
+".\Debug\fipadop.obj": "table.gd2" "table.gd3" "table.gd4" "table.gd5"
+".\Debug\fipadop.obj": "table.gd6" "table.gd7" "table.prc" "table.cre"
+".\Debug\fipadop.obj": "table.gd1" "table.prc" "table.cre" "table.gd1"
+".\Debug\fipadop.obj": ".\Debug\varalc.mod" "table.prc" "table.cre"
+".\Debug\fipadop.obj": "table.gd1" "table.alc" "table.prc" "table.cre"
+".\Debug\fipadop.obj": "table.gd1" "table.gd2" "table.gd3" "table.gd4"
+".\Debug\fipadop.obj": "table.gd5" "table.gd6" "table.gd7" "table.prc"
+".\Debug\fipadop.obj": "table.cre" "table.gd1" "table.prc" "table.cre"
+".\Debug\fipadop.obj": "table.gd1" "table.prc" "table.cre" "table.gd1"
+".\Debug\fipadop.obj": "table.prc" "table.prc" "table.prc" "table.prc"
+".\Debug\fipadop.obj": "table.prc" "table.prc" "table.prc" "table.prc"
+".\Debug\fipadop.obj": "table.prc" "table.prc" "table.prc" "table.cre"
+".\Debug\fipadop.obj": "table.gd1" "table.lei"
+
+".\Debug\freynold.obj": "table.prc" "table.cre" "table.lei"
+
+".\Debug\fsolves.obj": "table.prc" "table.dmw" "table.prc" "table.dmw"
+".\Debug\fsolves.obj": "table.prc" "table.gd2" "table.prc" "table.gd3"
+".\Debug\fsolves.obj": "table.prc" "table.gd4" "table.prc" "table.gd5"
+".\Debug\fsolves.obj": "table.prc" "table.gd6" "table.prc" "table.gd7"
+".\Debug\fsolves.obj": "table.prc" "table.prc" "table.prc" "table.dmw"
+".\Debug\fsolves.obj": "table.prc" "table.dmw" "table.prc" "table.dmw"
+".\Debug\fsolves.obj": "table.prc" "table.dmw" "table.prc" "table.prc"
+
+".\Debug\fsupply.obj": "table.prc" "table.cre" "table.gd1" "table.prc"
+".\Debug\fsupply.obj": ".\Debug\varalc.mod" "table.prc" "table.cre"
+".\Debug\fsupply.obj": "table.gd1" "table.prc" "table.cre" "table.gd1"
+
+".\Debug\famain.obj": "table.mdu" "table.prc"
